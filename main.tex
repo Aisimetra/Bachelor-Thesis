@@ -1,0 +1,149 @@
+\documentclass[11pt,oneside]{book}
+\usepackage[margin=1.5in]{geometry}
+\renewcommand{\baselinestretch}{1.3}
+\usepackage{graphicx}
+\usepackage[square,numbers]{natbib}
+\usepackage[italian]{babel}
+% le immagini vanno tutte in images/
+\graphicspath{{images/}}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage[nottoc]{tocbibind}
+\usepackage{engrec}
+\usepackage{microtype}
+\usepackage{enumerate}
+\usepackage{marginnote}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{float}
+\usepackage[utf8x]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\pagestyle{plain}
+\thispagestyle{empty}
+\usepackage{minted}
+
+
+\begin{document}
+    \begin{titlepage}
+            
+        \noindent
+        \begin{minipage}[t]{0.19\textwidth}
+            \vspace{-4mm}{\includegraphics[scale=1.15]{logo_unimib.png}}
+        \end{minipage}
+        \begin{minipage}[t]{0.81\textwidth}
+        {
+            \setstretch{1.42}
+                {\textsc{Università degli Studi di Milano - Bicocca}} \\
+                \textbf{Scuola di Scienze} \\
+                \textbf{Dipartimento di Informatica, Sistemistica e Comunicazione} \\
+                \textbf{Corso di laurea in Informatica} \\
+                \par
+        }
+        \end{minipage}
+            
+    	\vspace{35mm}
+            
+    	\begin{center}
+            {\Huge{
+                    \setstretch{1.2}
+                    \textbf{Detecting Fraud in Payment Services via Machine Learning}
+                    \par
+                }
+            }
+        \end{center}
+            
+        \vspace{35mm}
+    
+        \noindent
+            {\large \textbf{Relatore:} Dr. Antonio Candelieri} \\
+
+        \noindent
+            {\large \textbf{Co-relatore:} Dr. Andrea Catacchio}
+            
+        \vspace{15mm}
+    
+        \begin{flushright}
+            {\large \textbf{Relazione della prova finale di:}} \\
+            \large{Artemisia  Sarteschi} \\
+            \large{Matricola 829677} 
+        \end{flushright}
+            
+        \vspace{11mm}
+        \begin{center}
+            {\large{\bf Anno Accademico 2019-2020}}
+        \end{center}
+    
+        \restoregeometry
+            
+    \end{titlepage}
+%\clearpage
+
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\begin{flushright}
+\itshape
+\begin{tabular}{@{}l@{}}
+Quando la strada non esiste, inventala! \\
+\end{tabular}\\[3pt]
+B. -P. \\
+
+
+\end{flushright}
+\vspace{\stretch{2}}
+\cleardoublepage
+
+\thispagestyle{empty}
+\frontmatter
+\tableofcontents
+\input{capitoli.tex}
+\bibliographystyle{unsrtnat}
+\bibliography{bibliografia}
+
+\chapter*{Ringraziamenti}
+La persona fondamentale senza la quale tutto questo non sarebbe stato possibile ed è quindi super importante ringraziare è ME STESSA \verb{(^U^){. Brava Artemisia, hai dato di matto un numero dignitoso di volte, ma avresti potuto fare di peggio, sono fiera di te!
+\begin{center}
+\begin{verbatim}
+     ------------------ O==[]::::::::::::::::> ------------------
+\end{verbatim}
+\end{center}
+\noindent Ed ora tutti gli altri... \\
+Ringrazio il caffè che mi ha sostenuto durante tutto il percorso e la luna che mi guardava mentre scrivevo questa tesi, poche righe hanno avuto il privilegio di essere scritte alla luce del sole.
+
+\noindent Ringrazio i miei bimbi ovvero tutto il Reparto Idra, la Nutoka e la Compagnia Mizar che mi hanno dato i sorrisi più belli e le soddisfazioni più grandi, ma anche taaaanti pensieri. 
+
+\noindent Al dottorando, Riccardo, Ricky e la sua pazienza di non mandarmi al diavolo durante il tirocinio, soprattutto per le risposte ad ore imprecisate della sera e per la sua guida fondamentale per scoprire le magie di \textit{Python}, grazie.
+
+\noindent Grazie al mio babbo che mi sostiene anche se a distanza. 
+
+
+\noindent Ringrazio in ultimo (ma non per importanza) tutta quella banda di gente matta del dodicesimo ed anche gli infiltrati dagli altri piani, quindi: Francesco, Mattia, Sara, Erika, Daniel, Andrea, Martina e Vittorio (tutti in ordine puramente causale), grazie. \\
+
+
+\noindent Di sicuro mi sarò scordata qualcuno e dovrà aspettare la tesi magistrale (sempre che ci arrivi).
+
+
+
+
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\begin{flushright}
+\itshape
+\begin{tabular}{@{}l@{}}
+E quindi uscimmo a riveder le stelle \\
+\end{tabular}\\[3pt]
+Dante Alighieri
+
+\end{flushright}
+\vspace{\stretch{2}}
+\cleardoublepage
+\end{document}
+
+
+

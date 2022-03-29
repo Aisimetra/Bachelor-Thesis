@@ -1,0 +1,170 @@
+\chapter{Setting sperimentale}
+\section{Open Data: una challenge Kaggle su fraud detection}
+
+
+Durante il progetto di stage, in una prima fase di progettazione dell’approccio, è stato impiegato come dataset sperimentale un dataset di Kaggle chiamato \textit{Synthetic Financial Datasets For Fraud Detection} \citep{challenge}.
+Questo dataset è stato impiegato dai vari utenti di Kaggle come base per analisi esplorative e addestramento di vari algoritmi di Machine Learning supervisionato. Poiché, durante il  progetto risultava necessario utilizzare tali algoritmi, è stato deciso di utilizzarlo per comprendere quale algoritmo fosse maggiormente performante nell'andare ad identificare le relazioni che intercorrono tra le frodi.
+
+Inoltre, questo dataset è stato impiegato per lo sviluppo e la verifica della metodologia che  implementata per l'individuazione di anomalie statiche e dinamiche, conoscendo approfonditamente la composizione di questo dataset è stato possibile avere un riscontro immediato della validità dei risultati ottenuti.
+
+Il dataset è formato da undici colonne (Tabella \ref{tab:primo}) per un totale di circa sei milioni di istanze ed ognuna di queste corrisponde ad una transazione, non si tratta però del dataset originale ma bensì di un quarto di esso che è stato estratto per essere messo a disposizione degli utenti Kaggle. \\
+
+
+
+
+\noindent All'interno del dataset troviamo tre colonne i cui dati sono di tipo \textit{string} che contengono: 
+\begin{itemize}
+\item \textit{type}: tipologia di transazione
+\item \textit{nameOrig}: cliente che ha eseguito la transazione
+\item \textit{nameDest}: cliente che ha ricevuto la transazione
+\end{itemize}
+
+\noindent Inoltre, abbiamo cinque colonne di tipo \textit{decimale} che hanno al loro interno:
+
+\begin{itemize}
+
+\item \textit{amount}: importo della transazione nella valuta locale
+\item \textit{oldbalanceOrg}: saldo iniziale prima che il cliente esegua la transazione 
+\item \textit{newbalanceOrig}: saldo finale dopo che il cliente ha eseguito la transazione 
+\item \textit{oldbalanceDest}: saldo iniziale prima che il cliente riceva la transazione 
+\item \textit{newbalanceDest}: saldo iniziale finale dopo che il cliente ha ricevuto la transazione 
+
+\end{itemize}
+
+\noindent Infine, troviamo tre colonne di tipo \textit{intero}:
+
+\begin{itemize}
+\item \textit{step}: unità di tempo del mondo reale, in questo caso uno ``\textit{step}" corrisponde ad un'ora
+\item \textit{isFraud}: transazioni che sono fraudolente (1) o non fraudolente (0)
+\item \textit{isFlaggedFraud}: segnala i tentativi illegali di trasferire più di 200.000 unità in una singola transazione.\\
+
+\end{itemize}
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+step & type & amount & nameOrig & oldbalanceOrg & newbalanceOrig \\ \hline
+  ... & ...  & ... & ...  & ... & ... \\ \hline
+\end{tabular}
+\label{tab:primo}
+\end{table}
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|} \hline
+nameDest & oldbalanceDest & newbalanceDest & isFraud & isFlaggedFraud \\ \hline
+... & ... & ... & ... & ... \\ \hline
+\end{tabular}
+\caption{Colonne del dataset}
+\label{tab:secondo}
+\end{table}
+
+Durante la preparazione del dato, dopo aver analizzato più a fondo il dataset, è stato deciso di eliminare la colonna \textit{isFlaggedFraud} che risulta essere non significativa per l'analisi che andremo a condurre. Inoltre, è stato scelto di memorizzare separatamente la colonna \textit{isFraud} per allenare successivamente gli algoritmi supervisionati, ed abbiamo infine rinominato alcune colonne per avere dei nomi più significativi.
+
+Nell'analizzare il dataset è stato riscontrato come fossero presenti diversi casi in cui il saldo iniziale e finale rimanesse nullo, a fronte di una transazione con importo diverso da zero, sono state quindi segnalate queste anomalie con dei valori che l'algoritmo avrebbe facilmente riconosciuto come anomali. Oltre a ciò, è stata inserita una colonna contenente eventuali errori nel saldo.
+
+
+Dal confronto con il cliente è risultato che sarebbe stato più utile avere come voci del dataset gli utenti e non le singole transazioni, sono stati quindi estratti i singoli utenti e create delle nuove colonne (Tabella \ref{tab:new}) che aggregassero le tipologie di transazioni a seconda del tipo. Queste nuove colonne rendono più chiaro le regole che verranno prodotte con \textit{Decison Tree}, perché si concentrano sulla tipologia di transazione e possiedono già al loro interno l'importo di essa. 
+
+
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+User ID & Entrate & Bonifici & Debit & Ricariche & Pagamenti & Estero
+ \\ \hline
+... & ... & ... & ... & ...& ... & ... \\ \hline
+\end{tabular}
+\caption{Colonne del nuovo dataset basato sulla challenge}
+\label{tab:new}
+\end{table}
+
+
+\section{Un piccolo dataset reale}
+
+Al termine dello sviluppo descritto nel capitolo precedente, l'approccio è stato testato su un piccolo dataset reale fornito dal cliente. 
+All'interno di questo si trovano tutte le transazioni, con gli attributi più frequenti nei database delle banche (Tabella \ref{tab:reale}), di un ristretto gruppo di utenti nell'arco temporale di un anno.
+
+
+Ispezionando il dataset per comprendere meglio i dati in esso contenuti è stato possibile rilevare come alcuni attributi non fossero rilevanti, in particolare: 
+\textit{Descrizione Aggiuntiva} che sarebbe servito solo ad un operatore nel caso avesse avuto il compito di indagare sulle transazioni, \textit{Evidenza} il cui significato non ci era stato reso noto e \textit{Data} perché riporta la data contabile rispetto e non quella di esecuzione.\\
+
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+ID Transazione & ID Utente & Data & Descrizione & Valuta 
+ \\ \hline
+... & ... & ... & ... & ...\\ \hline
+\end{tabular}
+\label{tab:reale}
+\end{table}
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+Evidenza & Importo & Saldo & Descrizione Aggiuntiva
+ \\ \hline
+... & ... & ... & ...  \\ \hline
+\end{tabular}
+\caption{Attributi completi del dataset reale}
+\label{tab:reale}
+\end{table}
+
+Durante l'elaborazione dei dataset sono state estratte tutte le tipologie di transazione dalla colonna \textit{Descrizione} e rendendole degli attributi per rendere possibile conoscere chiaramente come i movimenti potenzialmente fraudolenti, di cui otteniamo le regole, sono stati effettuati.
+
+Avendo inoltre la possibilità di conoscere precisamente la data della transazione è stato deciso di inserire dei nuovi attributi legati al numero di operazioni giornaliere per tipologia e importi movimentati, al fine di rendere più elaborate possibili le regole. Gli attributi inseriti sono i seguenti:
+
+\begin{itemize}
+\item \textit{Num\textunderscore Op\textunderscore Tot}: Numero di operazioni totali effettuate da una singola persona in un mese
+\item \textit{Op\textunderscore In}: Numero di operazioni totali di incremento del conto corrente \textunderscore
+\item \textit{Op\textunderscore Out}: Numero di operazioni totali di decremento del conto corrente
+\item \textit{Num\textunderscore Giorni\textunderscore In}: Numero di giorni in cui sono state effettuate operazioni di incremento del conto corrente
+\item \textit{Num\textunderscore Giorni\textunderscore Out}: Numero di giorni in cui sono state effettuate operazioni di decremento del conto corrente
+\item \textit{Num\textunderscore Giorni\textunderscore In \textunderscore Out}: Numero di giorni in cui sono state effettuate operazioni sia di incremento che di decremento del conto corrente
+\item \textit{Num\textunderscore Giorni\textunderscore Op}: Numero totale di giorni in cui sono state effettuate operazioni di qualsiasi genere
+\item \textit{Amount\textunderscore Movim\textunderscore Tot}: Importo totale movimentato da operazioni di qualsiasi tipo in un mese
+\item \textit{Amount\textunderscore Tot\textunderscore  In}: Importo totale movimentato in operazioni di incremento in un mese
+\item \textit{Amount\textunderscore Tot\textunderscore  Out}: Importo totale movimentato in operazioni di decremento in un mese
+\item \textit{Min\textunderscore Transaction}: Transazione minima (in valore assoluto)
+\item \textit{Max\textunderscore Transaction}: Transazione massima (in valore assoluto)
+\item \textit{Media\textunderscore Amount}: Saldo medio di ogni cliente
+\item \textit{Min\textunderscore Amount}: Saldo minimo di ogni cliente 
+\item \textit{Max\textunderscore Amount}: Saldo massimo di ogni cliente
+\item \textit{Amount\textunderscore Finale}: Saldo finale di ogni cliente 
+\end{itemize}
+
+\noindent Le colonne finali del dataset considerato risultano essere le seguenti (Tabella \ref{tab:ti}).
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+ID\textunderscore Utente & Num\textunderscore Op\textunderscore Tot & Op\textunderscore In & Op\textunderscore Out & Num\textunderscore Giorni\textunderscore In & Num\textunderscore Giorni\textunderscore Out\\ \hline
+... & ... & ... & ... & ...& ...\\ \hline
+\end{tabular}
+\end{table}
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+Num\textunderscore Giorni\textunderscore Out & Num\textunderscore Giorni\textunderscore In \textunderscore Out & Num\textunderscore Giorni\textunderscore Op & Amount\textunderscore Movim\textunderscore Tot \\ \hline
+... & ... & ... & ...  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+Amount\textunderscore Tot\textunderscore  In & Amount\textunderscore Tot\textunderscore Out & Min\textunderscore Transaction & Max\textunderscore Transaction \\ \hline
+... & ... & ... & ...   \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H] %ht
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+Media\textunderscore Amount & Min\textunderscore Amount & Max\textunderscore Amount & Amount\textunderscore Finale \\ \hline
+... & ... & ... & ...  \\ \hline
+\end{tabular}
+\caption{Attributi completi del dataset reale dopo l'elaborazione}
+\label{tab:ti}
+\end{table}
+

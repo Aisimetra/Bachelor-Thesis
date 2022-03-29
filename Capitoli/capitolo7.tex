@@ -1,0 +1,15 @@
+\chapter{Conclusioni}
+L'analisi condotta nel progetto di stage fornisce dei risultati promettenti per l'individuazione di potenziali clienti fraudolenti attraverso tecniche di Machine Learning, in particolare tramite l'impiego di algoritmi di clustering (Machine Learning non supervisionato) e alberi di decisione (Machine Learning supervisionato). 
+
+I risultati evidenziano come sia sempre possibile suddividere, per ogni periodo di tempo desiderato, l'insieme degli utenti di una banca in cluster e analizzarne ogni composizione. In particolare, analizzandone la composizione è possibile identificare i cluster anomali per segnalarli al termine dell'analisi.
+L'estrazione delle regole per ogni anomalia statica, che viene effettuata al termine della loro identificazione, può in un secondo momento essere impiegata come enciclopedia di schemi conosciuti di riciclaggio di denaro.
+
+Queste informazioni possono diventare fondamentali per poter rilevare frodi o segnalare un comportamento potenzialmente fraudolento  in maniera tempestiva, permettendo quindi durante l'analisi di non rilevare solamente le attuali frodi ma prevenirne di future.
+
+
+Inoltre, risulta di grande rilevanza l'analisi longitudinale dei vari mesi, unico strumento per poter eventualmente rilevare delle anomalie dinamiche di salto tra cluster, anche con utenti che staticamente non si configurano mai come anomali. Un cliente potrebbe non avere in nessun caso un comportamento che lo porti a discostarsi da uno dei cluster presenti nel mese, non posizionandosi mai come anomalia non verrebbe mai segnalato come tale e passerebbe sempre come utente non fraudolento. Implementando però l'analisi longitudinale è possibile investigare tutti quei clienti che, pur rimanendo sempre all'interno di un cluster, effettuano molti salti di cluster non giustificabili da un cambio di abitudini finanziarie (ad esempio un nuovo lavoro), riuscendo quindi ad identificarli e porli sotto osservazione. \\
+
+\noindent L'analisi finale viene lasciata ad un operatore, a cui vengono forniti tutti i risultati ottenuti dall'analisi statica e dinamica dei mesi dell'orizzonte temporale considerato. L'operatore avrà il compito di controllare i clienti segnalati e le transazioni sospette per determinare l'effettiva presenza di una frode oppure rilevare un comportamento anomalo ma influenzato da agenti esterni e quindi perfettamente spiegabile.\\
+
+
+

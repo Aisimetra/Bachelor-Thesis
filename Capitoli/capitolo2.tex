@@ -1,0 +1,61 @@
+
+\chapter{L'identificazione automatica di schemi fraudolenti in transazioni bancarie}
+
+\section{Definizione di transazioni fraudolente}
+
+Nell'andare a definire una transazione fraudolenta partiamo dal definire cosa si intenda per frode. 
+Essa è definibile come un comportamento o azione ingannevole progettata per fornire all'autore un guadagno scorretto o illegale oppure per negare un diritto a una vittima. 
+L’autore della frode può essere un singolo individuo, ma anche più persone fino ad arrivare ad un intera azienda.
+
+Le frodi implicano una falsa rappresentazione dei fatti, realizzata sia nascondendo intenzionalmente informazioni salienti, sia fornendo false dichiarazioni con lo scopo di ottenere qualcosa che non potrebbe essere ottenuto senza l’inganno. 
+Esse possono verificarsi in ambito: finanziario, immobiliare, d’investimenti e assicurativo, includono varie tipologie come la frode con carte di credito, fiscale, telematica, finanziaria e in caso di bancarotta.
+
+Fondamentalmente, l’individuo o l’azienda che commette una frode si avvale di asimmetrie nelle informazioni, in modo particolare sfrutta la necessità di impiegare una quantità di risorse molto elevata per la revisione e verifica delle informazioni che portano ad un disincentivo nella prevenzione della frode.
+
+L'ambito su cui il progetto di stage si focalizza è sull'analisi di transazioni fraudolente svolte nell'ambito dell'antiriciclaggio che solitamente si realizzando con transazioni frequenti di piccole somme e/o grossi spostamenti di denaro in entrata ed in uscita con un saldo finale nullo.
+
+
+
+\section{Il tema dell'antiriciclaggio}
+
+Il riciclaggio (money laundering) viene legalmente definito come “un trasferimento di denaro ottenuto illegalmente tramite persone o conti legittimi cosicché la fonte originale non possa essere tracciata”\citep{teher}.
+Questo denaro ottenuto illegalmente, definito ``denaro sporco",  viene quindi depositato in istituti finanziari e dal momento che sembrerà provenire da fonti legali non attirerà l’attenzione delle forze dell'ordine.
+
+I profitti ottenuti attraverso questo processo vengono talvolta impiegati per finanziare crimini, includendo terrorismo, traffico di droga e vendita di armi illegali. 
+La stima del profitto mondiale ottenuto tramite il riciclaggio di denaro in un anno è approssimatamene il 2-5\% del PIL globale (GDP) . %\citep{pil}.
+
+Il riciclaggio si compone di tre stadi:
+
+\begin{itemize}
+
+\item \textbf{\textit{Collocamento}}: lo stadio più rischioso in cui ingenti somme di denaro sporco vengono spostate dalla sua fonte negli istituti finanziari, sia locali che esteri. 
+
+\item \textbf{\textit{Stratificazione}}: l’obbiettivo di questo stadio è rendere difficile rilevare, scoprire e tracciare il denaro ``sporco". Si tratta di un processo molto sofisticato in cui vengono effettuate diverse spostamenti di denaro tramite bonifici tra conti, con nomi e paesi differenti, vari trasferimenti tra banche, depositi e prelievi con diverse somme di denaro e cambi di valuta. 
+
+\item \textit{\textbf{Integrazione}}: l’ultimo e più semplice stadio tra i tre ed inoltre il più difficile da rilevare.
+La difficoltà nel rilevamento è insita nella difficoltà nell'identificare un riciclatore senza documentazione che provi i due stadi precedenti.
+Il denaro precedentemente ottenuto, ora legittimo perché proveniente da transazioni legali, viene ora impiegato per acquistare beni o per continuare a finanziare attività illegali.
+\end{itemize}
+
+Il termine \textit{antiriciclaggio} indica tutte le procedure, leggi, politiche, regolamenti e atti legislativi che impongono gli istituti finanziari per monitorare i loro clienti e per impedire il riciclaggio. Questo richiede inoltre alle istituzioni finanziare di segnalare qualsiasi reato finanziario che rilevano e bloccarlo. 
+
+
+I sistemi antiriciclaggio (Anti-Money Laudering - AML) sono implementati dagli istituti finanziari come banche e da altri organismi che forniscono credito, in modo tale da combattere il fenomeno identificando scenari, potenziali attori e le transazioni coinvolte.
+
+
+Questi sistemi software sono progettati per aiutare gli istituti finanziari a combattere il riciclaggio analizzando i dati che compongono i profili dei clienti identificando transazioni sospette e anomale, che includono ogni incremento di denaro improvviso o un ampio prelievo, ma anche piccole transazioni sono segnalate come sospette.
+
+Tuttavia le tecniche di riciclaggio sono sempre più sofisticate e difficili da identificare perché cercano sempre più di annidarsi nel grande volume di dati e transazioni delle banche che creano un ambiente ideale per nascondere il denaro sporco. 
+
+Le soluzioni devono quindi evolvere bilanciando accuratezza e tempo di processamento, durante il corso degli ultimi anni ci sono state moltissime soluzioni proposte che generalmente in una prima fase raccolgono e processano i dati, poi controllano e monitorano le transazioni e se una di queste è anomala la segnalano ad un analista che deciderà se segnalarla come fraudolenta.
+
+Generalizzando possiamo vedere come i sistemi AML seguano uno schema composto da quattro layer \citep{han2020artificial}.
+
+\begin{itemize}
+\item \textit{Data Layer}: in cui i dati più rilevanti vengono raccolti e archiviati, includendo: sia quelli interni provenienti dall'istituto finanziario, sia quelli esterni provenienti da altre fonti come autorità, enti regolatori o da liste di controllo.
+\item \textit{Screening and Monitoring Layer}: all'interno del quale le transazioni e i clienti vengono controllati, in modo quasi totalmente automatizzato, per cercare attività sospette e nel caso in cui fossero trovate si passa al layer successivo.
+\item \textit{Alert and Event Layer}: nel caso in cui alcune transazioni fossero segnalate come anomale vengono passate in questo layer per un ulteriore verifica. Questo processo compara i dati della transazione segnalata con le informazioni sulle transazioni storiche e eventuali informazioni in possesso dell'istituto finanziario o di fonti esterne.
+\item \textit{Operational Layer}: in cui un analista prende la decisione definitiva di bloccare o approvare la transazioni.
+\end{itemize}
+
+Questi layer sopracitati sono stati adottati come schema base anche nel progetto di stage in cui tramite analisi di diverse metriche descritte nei capitoli seguenti ed applicando algoritmi machine learning siamo riusciti a visualizzare persone potenzialmente fraudolente.

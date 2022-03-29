@@ -1,0 +1,38 @@
+\chapter{Soluzioni data-driven per la ``fraud-detection'': lo stato dell'arte}
+
+
+
+Tra le varie soluzioni che sono impiegate per rilevare le frodi nell'ambito del riciclaggio, durante il progetto di stage ci siamo focalizzati su quelle ``data-driven''. I dati sono stati utilizzati come base per le decisioni e le strategie impiegate, eliminando tutta la componente di considerazioni personali e osservazioni tipiche di altri approcci.
+
+Per l'analisi di questi dati ci siamo basati su algoritmi di apprendimento automatico (Machine Learning-ML),  un sottoinsieme dell'intelligenza artificiale (Artificial Intelligence - AI) che rende i computer in grado di imparare in modo autonomo dall'esperienza senza essere esplicitamente programmati per farlo.
+Durante il corso degli ultimi anni questi algoritmi sono stati largamente impiegati nell'antiriciclaggio perché fondamentali nella riduzione delle percentuali di falsi positivi e nell'individuazione tempestiva di transazioni sospette.
+
+Le due principali famiglie di algoritmi di ML attualmente utilizzati sono gli algoritmi supervisionati e non supervisionati. La differenza tra questi due approcci viene definita dal modo in cui ciascun algoritmo apprende i dati per fare previsioni. 
+
+Gli algoritmi di \textit{apprendimento supervisionato} (supervised machine learning) imparano da un dataset di addestramento passato dal supervisore, precedentemente etichettato e con un attributo target predefinito (output), contenente transazioni e schemi sia anomali che normali per andare a costruire il modello predittivo. Il dataset su cui viene fatto l'addestramento dell'algoritmo deve essere inoltre ben formato prima di applicare tecniche e algoritmi di machine learning. 
+Questo approccio è adatto per quelle banche che che hanno un esperienza pregressa nel rilevare il  riciclaggio di denaro. 
+
+
+Nel caso invece dell'\textit{apprendimento automatico senza supervisione} (unsupervised machine learning), gli algoritmi lavorano su insieme di dati privi di etichette, senza riferimenti noti, per cui non è stato definito un output specifico.
+L'algoritmo lavora senza supervisione basandosi solamente sulle sulle informazioni latenti del dataset non etichettato e non necessita di un reale addestramento.
+L'obiettivo di apprendimento senza supervisione è scoprire modelli nascosti, somiglianze, strutture nascoste e raggruppamenti di dati senza alcuna formazione preliminare. Questo approccio è adatto per le banche che non dispongono di metodi per esaminare i dati e non dispongono di conoscenza pregressa, ma anche per tutti gli istituti finanziari che vogliono cercare nuovi schemi e individuare un numero maggiore di frodi.
+
+Sulla base dei risultati ottenuti dalle ricerche più recenti sulle soluzioni da adottare in campo AML si è visto come le attuali tecniche prestano particolare attenzione alla qualità del dataset e alla scelta dell'algoritmo di ML ottimale per i dati forniti.
+In un primo momento, i dati grezzi ottenuti dalle istituzioni finanziarie vanno spesso a tradursi in volumi di dati estremamente grandi e sbilanciati, che alcuni studi recenti suggeriscono di gestire applicando tecniche supervisionate. 
+
+Etichettando quando possibile come normale o sospetta una transazione sulla base degli esempi forniti, l'algoritmo crea un modello di apprendimento supervisionato per classificare i nuovi dati in diverse categorie.
+
+Tuttavia, altri studi suggeriscono di applicare tecniche non supervisionate, che consistono in algoritmi che cercano di separare i dati in gruppi diversi senza basarsi su un insieme di dati precedentemente etichettati. Questi gruppi di oggetti, noti come cluster, presentano tra loro delle similarità, ma allo stesso tempo presentano caratteristiche differenti con oggetti appartenenti ad altri cluster.
+Sebbene a volte la tecnica di apprendimento senza supervisione contenga anche un insieme di dati di addestramento, l'etichetta dei dati verrà omessa durante il processo di apprendimento e verrà utilizzato per la valutazione dopo aver generato i cluster. 
+Questo approccio viene ripreso nei lavori proposti in \citep{le2010application, larik2011clustering}. Nel primo viene adottato un sistema di AML attraverso un particolare algoritmo non supervisionato chiamato K-means che attraverso la distanza tra cluster cerca di identificare gli utenti che compiono transazioni anomale. Nel secondo viene principalmente impiegata la deviazione tra i cluster per definire transazioni normali e anomale.
+
+Nello studio condotto in \citep{omar2013machine} dove varie tecniche di ML vengono confrontate, emerge che le tecniche supervisionate siano più performanti delle non supervisionate, nel caso in cui il dataset non presenti tipologie di attacchi sconosciute. In caso contrario, gli algoritmi di ML non supervisionato sono più performanti, dal momento che non si basano su un insieme di dati su cui l'algoritmo è stato allenato, ma cercano di aggregare ed isolare tutte quelle transazioni che si discostano dal normale.
+
+Poiché le operazioni finanziarie possono variare di volta in volta, vi è una costante necessità di nuovi metodi, tecniche e modelli che possano rilevare in anticipo nuovi schemi di riciclaggio ed allo stesso tempo monitorare quelli conosciuti. 
+
+Per questo motivo, nel corso del progetto di stage abbiamo eseguito inizialmente dei test su un dataset sperimentale applicando un approccio supervisionato, ma ci siamo poi concentrati su un approccio non supervisionato una volta passati ai dati reali.
+
+
+
+
+
